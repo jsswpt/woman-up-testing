@@ -1,0 +1,7 @@
+@use "../../shared/modules/breakpoints.module";
+@use "../../shared/modules/units.module";
+
+.main {
+  padding: units.$padding 0;
+  height: 300vh;
+}

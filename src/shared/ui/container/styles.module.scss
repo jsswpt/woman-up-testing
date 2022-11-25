@@ -1,0 +1,15 @@
+@use "../../modules/breakpoints.module";
+@use "../../modules/units.module";
+
+.container {
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  @include breakpoints.screen-xs {
+    padding: 0 units.$padding;
+  }
+  @include breakpoints.screen-lg {
+    padding-left: calc(units.$padding + units.$sidebar-width);
+    padding-right: units.$padding;
+  }
+}

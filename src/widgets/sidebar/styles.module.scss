@@ -1,0 +1,18 @@
+@use "../../shared/modules/colors.module";
+@use "../../shared/modules/units.module";
+
+.sidebar {
+  padding-left: units.$padding;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: units.$sidebar-width;
+  background: colors.$surface;
+}
+
+.sidebar_top {
+  display: flex;
+  align-items: center;
+  height: units.$header-height;
+}
