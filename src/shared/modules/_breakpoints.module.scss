@@ -1,0 +1,21 @@
+$xs: 0;
+$sm: 768px;
+$lg: 1290px;
+
+@mixin screen-xs {
+  @media (min-width: $xs) {
+    @content;
+  }
+}
+
+@mixin screen-sm {
+  @media (min-width: $sm) {
+    @content;
+  }
+}
+
+@mixin screen-lg {
+  @media (min-width: $lg) {
+    @content;
+  }
+}
