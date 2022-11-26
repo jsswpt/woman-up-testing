@@ -1,0 +1,24 @@
+@use "./units.module";
+@use "./colors.module";
+
+@mixin scrollbar-main {
+  &::-webkit-scrollbar {
+    width: units.$unit;
+    background: #fff;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    background: rgba(96, 197, 96, 0.64);
+  }
+}
+
+@mixin scrollbar-small {
+  &::-webkit-scrollbar {
+    width: units.$unit / 2;
+    background: #fff;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    background: rgba(96, 197, 96, 0.25);
+  }
+}
