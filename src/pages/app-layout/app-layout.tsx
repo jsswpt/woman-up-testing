@@ -18,7 +18,9 @@ export const AppLayout = () => {
           <Header />
         </Suspense>
         <main className={st.main}>
-          <Outlet />
+          <Suspense fallback={<>Loading page...</>}>
+            <Outlet />
+          </Suspense>
         </main>
       </div>
     </div>

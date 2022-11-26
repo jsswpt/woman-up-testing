@@ -28,6 +28,6 @@
 }
 
 .main {
-  padding: units.$padding 0;
+  padding: units.$paddingY units.$paddingX;
   height: 300vh;
 }
