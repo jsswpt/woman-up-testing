@@ -1,0 +1,11 @@
+@use "../../modules/units.module";
+@use "../../modules/colors.module";
+
+.button {
+  border: none;
+  outline: none;
+}
+
+.small {
+  height: units.$small;
+}
