@@ -9,9 +9,10 @@
   width: 100%;
   height: units.$header-height;
   background: colors.$surface;
-  box-shadow: 0 0 32px rgba(0, 0, 0, 0.05);
+  box-shadow: 20px -5px 32px rgba(0, 0, 0, 0.05);
 
   @include breakpoints.screen-lg {
+    z-index: 3;
     position: fixed;
     top: 0;
     left: units.$sidebar-width;

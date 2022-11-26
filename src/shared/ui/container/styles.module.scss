@@ -6,9 +6,9 @@
   align-items: center;
   justify-content: space-between;
   @include breakpoints.screen-xs {
-    padding: 0 units.$padding;
+    padding: 0 units.$paddingX;
   }
   @include breakpoints.screen-lg {
-    padding: 0 units.$padding;
+    padding: 0 units.$paddingX;
   }
 }
