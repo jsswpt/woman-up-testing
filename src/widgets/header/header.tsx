@@ -4,9 +4,9 @@ import st from "./styles.module.scss";
 
 const Header = () => {
   return (
-    <div className={st.header}>
+    <header className={st.header}>
       <Container className={st.header_container}>Header</Container>
-    </div>
+    </header>
   );
 };
 
