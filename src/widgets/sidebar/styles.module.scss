@@ -1,7 +1,10 @@
 @use "../../shared/modules/colors.module";
+@use "../../shared/modules/breakpoints.module";
 @use "../../shared/modules/units.module";
+@use "../../shared/modules/presets.module";
 
 .sidebar {
+  z-index: 2;
   padding-left: units.$padding;
   position: fixed;
   left: 0;
@@ -9,10 +12,110 @@
   height: 100vh;
   width: units.$sidebar-width;
   background: colors.$surface;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  @include presets.scrollbar-small;
+
+  @include breakpoints.screen-sm {
+    flex-shrink: 0;
+    position: static;
+  }
+  @include breakpoints.screen-lg {
+    position: fixed;
+  }
+}
+
+.closed {
+  display: none;
+}
+
+.opened {
+  display: block;
 }
 
 .sidebar_top {
+  margin-bottom: units.$unit * 5;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: units.$header-height;
+}
+
+.logo_wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: units.$unit;
+}
+
+.logo_title {
+  text-transform: uppercase;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: -1px;
+  color: colors.$text-primary;
+}
+
+.sidebar_middle {
+  display: flex;
+  flex-direction: column;
+  gap: units.$unit * 5;
+  flex-wrap: nowrap;
+}
+
+.closing {
+  animation: closing-anim forwards linear 0.75s;
+}
+
+.opening {
+  animation: opening-anim forwards linear 0.75s;
+}
+
+@keyframes closing-anim {
+  0% {
+    display: block;
+    width: units.$sidebar-width;
+  }
+  50% {
+    width: 0;
+  }
+
+  100% {
+    display: none;
+    width: 0;
+  }
+}
+
+@keyframes opening-anim {
+  0% {
+    display: none;
+    width: 0;
+  }
+  50% {
+    display: block;
+  }
+  100% {
+    width: units.$sidebar-width;
+  }
+}
+
+.open_button {
+  z-index: 1;
+  position: fixed;
+  left: 0;
+  top: 50%;
+
+  margin: 0;
+  padding: 0;
+
+  background: colors.$surface;
+  height: units.$unit * 15;
+
+  outline: none;
+  border: none;
+  border-radius: 0 50% 50% 0;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.25);
+
+  transform: translate(0, -50%);
 }

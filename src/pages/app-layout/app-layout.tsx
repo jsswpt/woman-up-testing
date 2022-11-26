@@ -1,6 +1,5 @@
 import React, { Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import { Container } from "shared/ui/container/container";
 import { Loader } from "shared/ui/loader/loader";
 import Header from "widgets/header/header";
 
@@ -12,14 +11,16 @@ export const AppLayout = () => {
   return (
     <div className={st.layout}>
       <Suspense fallback={<Loader />}>
-        <Header />
+        <Sidebar />
       </Suspense>
-      <main className={st.main}>
+      <div className={st.app_wrap}>
         <Suspense fallback={<Loader />}>
-          <Sidebar />
+          <Header />
         </Suspense>
-        <Outlet />
-      </main>
+        <main className={st.main}>
+          <Outlet />
+        </main>
+      </div>
     </div>
   );
 };

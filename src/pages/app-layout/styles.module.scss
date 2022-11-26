@@ -1,5 +1,31 @@
 @use "../../shared/modules/breakpoints.module";
 @use "../../shared/modules/units.module";
+@use "../../shared/modules/presets.module";
+
+.layout {
+  display: flex;
+
+  @include breakpoints.screen-xs {
+    overflow: hidden;
+    max-height: 100vh;
+  }
+
+  @include breakpoints.screen-lg {
+    overflow: auto;
+    max-height: none;
+  }
+}
+
+.app_wrap {
+  flex-grow: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  @include presets.scrollbar-main;
+  @include breakpoints.screen-lg {
+    padding-left: units.$sidebar-width;
+    padding-top: units.$header-height;
+  }
+}
 
 .main {
   padding: units.$padding 0;

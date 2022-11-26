@@ -3,9 +3,10 @@
 @use "../../shared/modules/colors.module";
 
 .header {
-  z-index: 1000;
   display: flex;
   align-items: center;
+  flex-shrink: 0;
+  width: 100%;
   height: units.$header-height;
   background: colors.$surface;
   box-shadow: 0 0 32px rgba(0, 0, 0, 0.05);
@@ -15,9 +16,5 @@
     top: 0;
     left: units.$sidebar-width;
     width: 100%;
-
-    .header_container {
-      padding-left: units.$padding;
-    }
   }
 }
