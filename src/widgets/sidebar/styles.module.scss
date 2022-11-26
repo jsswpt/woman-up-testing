@@ -5,13 +5,16 @@
 
 .sidebar {
   z-index: 2;
-  padding-left: units.$padding;
+  padding-left: units.$paddingX;
   position: fixed;
   left: 0;
   top: 0;
   height: 100vh;
   width: units.$sidebar-width;
   background: colors.$surface;
+
+  box-shadow: 0 0 32px rgba(0, 0, 0, 0.05);
+
   overflow-x: hidden;
   overflow-y: auto;
 
@@ -78,10 +81,12 @@
     width: units.$sidebar-width;
   }
   50% {
+    padding: 0;
     width: 0;
   }
 
   100% {
+    padding: 0;
     display: none;
     width: 0;
   }
