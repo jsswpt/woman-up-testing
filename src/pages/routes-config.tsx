@@ -1,3 +1,4 @@
+import { setCurrentTasks } from "entities/tasks";
 import React, { Suspense } from "react";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import { routePaths } from "shared/api/internal/consts/route-paths";
@@ -23,6 +24,10 @@ export const publicRoutes = createBrowserRouter([
       {
         path: routePaths.public.CATEGORY + ":categoryId",
         element: <CategoryPage />,
+        loader: (args) => {
+          const { categoryId } = args.params;
+          setCurrentTasks(Number(categoryId!));
+        },
         errorElement: <>error category</>,
       },
       {

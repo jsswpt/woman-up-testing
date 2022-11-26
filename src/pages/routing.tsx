@@ -4,6 +4,8 @@ import { publicRoutes } from "./routes-config";
 
 export const Routing = () => {
   return (
-    <RouterProvider router={publicRoutes} fallbackElement={<>Loading...</>} />
+    <Suspense fallback={<>Loading...</>}>
+      <RouterProvider router={publicRoutes} />
+    </Suspense>
   );
 };
