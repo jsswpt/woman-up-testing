@@ -4,7 +4,12 @@ import { Container } from "shared/ui/container/container";
 const HomePage = () => {
   return (
     <section>
-      <Container>HomePage</Container>
+      <Container>
+        <p>
+          На домашней странице можно вывести недавние задачи, статистику
+          выполненных / невыполненных и тд
+        </p>
+      </Container>
     </section>
   );
 };

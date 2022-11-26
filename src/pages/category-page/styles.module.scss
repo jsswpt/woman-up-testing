@@ -1,0 +1,45 @@
+@use "../../shared/modules/breakpoints.module";
+@use "../../shared/modules/units.module";
+
+$gap: units.$unit * 2;
+
+.section_top {
+  margin-bottom: units.$unit * 4;
+
+  @include breakpoints.screen-lg {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .filters_wrap {
+      width: units.$unit * 60;
+    }
+  }
+}
+
+.filters_wrap {
+  display: flex;
+  gap: units.$unit;
+}
+
+.select {
+  width: 100%;
+}
+
+.tasks_grid {
+  display: grid;
+  gap: $gap;
+
+  @include breakpoints.screen-xs {
+    grid-template-columns: repeat(1, calc(100%));
+  }
+
+  @include breakpoints.screen-sm {
+    grid-template-columns: repeat(2, calc(100% / 2 - $gap * 0.5));
+  }
+
+  @include breakpoints.screen-lg {
+    grid-template-columns: repeat(3, calc(100% / 3 - $gap * 0.666666));
+  }
+
+  list-style: none;
+}
