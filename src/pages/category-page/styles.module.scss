@@ -1,5 +1,6 @@
 @use "../../shared/modules/breakpoints.module";
 @use "../../shared/modules/units.module";
+@use "../../shared/modules/typography.module";
 
 $gap: units.$unit * 2;
 
@@ -14,6 +15,10 @@ $gap: units.$unit * 2;
       width: units.$unit * 60;
     }
   }
+}
+
+.title {
+  @include typography.h3;
 }
 
 .filters_wrap {

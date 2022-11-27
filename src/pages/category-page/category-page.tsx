@@ -3,8 +3,8 @@ import { useList, useStore } from "effector-react";
 import { $finalTasks, TaskCard } from "entities/tasks";
 import { Container } from "shared/ui/container/container";
 import st from "./styles.module.scss";
-import dayjs from "dayjs";
 import { dateFormatter } from "shared/lib/dateFormatter";
+import { Select } from "shared/ui/select/select";
 
 const CategoryPage = () => {
   const currentTasks = useList($finalTasks, (task) => (
@@ -23,10 +23,19 @@ const CategoryPage = () => {
     <section className={st.task_section}>
       <Container>
         <div className={st.section_top}>
-          <p>Задачи</p>
+          <h3 className={st.title}>Задачи</h3>
           <div className={st.filters_wrap}>
-            <select name="" id="" className={st.select}></select>
-            <select name="" id="" className={st.select}></select>
+            <Select
+              placeholder="???"
+              defaultValue={12}
+              name=""
+              id=""
+              className={st.select}
+            >
+              <option value={12}>Что???</option>
+              <option value={123}>Что???</option>
+            </Select>
+            <Select name="" id="" className={st.select}></Select>
           </div>
         </div>
         <div>
