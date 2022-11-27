@@ -7,74 +7,74 @@ import { Task } from "shared/api/internal/task/task.type";
  */
 export const $tasks = createStore<Task[]>([
   {
-    categoryId: 1,
+    categoryId: "anyid",
     creationDate: new Date("2022-11-25"),
     deadline: new Date("2022-12-11"),
     files: null,
-    id: 1,
+    id: "someid",
     title: "Sometask category 1",
     description: "Первая таска",
   },
   {
-    categoryId: 1,
+    categoryId: "anyid",
     creationDate: new Date("2022-11-26"),
     deadline: new Date("2022-12-13"),
     files: null,
-    id: 2,
+    id: "someid",
     title: "Sometask2 category 1",
     description: "Первая таска",
   },
   {
-    categoryId: 1,
+    categoryId: "anyid",
     creationDate: new Date("2022-11-26"),
     deadline: new Date("2022-12-13"),
     files: null,
-    id: 3,
+    id: "someid3",
     title: "Sometask2 category 1",
     description: "Первая таска",
   },
   {
-    categoryId: 1,
+    categoryId: "anyid",
     creationDate: new Date("2022-11-26"),
     deadline: new Date("2022-12-13"),
     files: null,
-    id: 4,
+    id: "someid4",
     title: "Sometask2 category 1",
     description: "Первая таска",
   },
   {
-    categoryId: 2,
+    categoryId: "anyid2",
     creationDate: new Date("2022-11-25"),
     deadline: new Date("2022-12-11"),
     files: null,
-    id: 5,
+    id: "someid5",
     title: "Sometask category 2",
     description: "Первая таска",
   },
   {
-    categoryId: 2,
+    categoryId: "anyid2",
     creationDate: new Date("2022-11-26"),
     deadline: new Date("2022-12-13"),
     files: null,
-    id: 6,
+    id: "someid6",
     title: "Sometask2 category 2",
     description: "Первая таска",
   },
   {
-    categoryId: 2,
+    categoryId: "anyid2",
     creationDate: new Date("2022-11-26"),
     deadline: new Date("2022-12-13"),
     files: null,
-    id: 6,
+    id: "someid7",
     title: "Sometask2 category 2",
     description: "Первая таска",
   },
   {
-    categoryId: 2,
+    categoryId: "anyid2",
     creationDate: new Date("2022-11-26"),
     deadline: new Date("2022-12-13"),
     files: null,
-    id: 6,
+    id: "someid8",
     title: "Sometask2 category 2",
     description: "Первая таска",
   },
@@ -100,13 +100,13 @@ export const $finalTasks = createStore<Task[]>([]);
  */
 export const $filters = createStore<Filter<Task>[]>([]);
 
-export const $currentCategory = createStore<number | null>(null);
+export const $currentCategory = createStore<string | null>(null);
 
 export const setCurrentTasks = createEvent();
 
 export const addFilter = createEvent<Filter<Task>>();
 
-export const setCurrentCategory = createEvent<number>();
+export const setCurrentCategory = createEvent<string>();
 
 sample({
   clock: setCurrentCategory,

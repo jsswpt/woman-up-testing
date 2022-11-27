@@ -11,7 +11,7 @@ const SidebarCategoriesList = React.memo(() => {
   const navigate = useNavigate();
 
   const navigateTo = useCallback(
-    (id: number) => navigate(`${routePaths.publicNavigation.CATEGORY}${id}`),
+    (id: string) => navigate(`${routePaths.publicNavigation.CATEGORY}${id}`),
     []
   );
 

@@ -26,7 +26,7 @@ export const publicRoutes = createBrowserRouter([
         element: <CategoryPage />,
         loader: (args) => {
           const { categoryId } = args.params;
-          setCurrentCategory(Number(categoryId!));
+          setCurrentCategory(categoryId!);
         },
         errorElement: <>error category</>,
       },

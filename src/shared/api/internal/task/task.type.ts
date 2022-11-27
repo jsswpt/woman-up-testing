@@ -1,6 +1,6 @@
 export type Task = {
-  id: number;
-  categoryId: number;
+  id: string;
+  categoryId: string;
   title: string;
   description: string | null;
   creationDate: Date;

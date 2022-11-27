@@ -8,21 +8,21 @@ import {
 import { Task } from "shared/api/internal/task/task.type";
 
 export const $task = createStore<Task>({
-  categoryId: 0,
+  categoryId: "",
   creationDate: new Date(),
   deadline: new Date(),
   description: "",
   files: [],
-  id: 0,
+  id: "",
   title: "",
 });
 
 export const setTitle = createEvent<string>();
 export const setDescription = createEvent<string>();
 export const setDeadline = createEvent<Date>();
-export const setCategoryId = createEvent<number>();
+export const setCategoryId = createEvent<string>();
 export const addFile = createEvent<File>();
-export const removeFile = createEvent<number>();
+export const removeFile = createEvent<string>();
 
 export const addTask = createEvent();
 

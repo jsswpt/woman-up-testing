@@ -7,7 +7,7 @@ interface TaskCardProps {
   files: number;
   creationDate: string;
   deadline: string;
-  id: number;
+  id: string;
 }
 
 export const TaskCard = (props: TaskCardProps) => {

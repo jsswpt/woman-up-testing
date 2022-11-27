@@ -56,9 +56,7 @@ export const AddTaskFeature = () => {
             {categories.length ? (
               <Select
                 value={task.categoryId}
-                onChange={(evt) =>
-                  setCategoryId(Number(evt.currentTarget.value))
-                }
+                onChange={(evt) => setCategoryId(evt.currentTarget.value)}
               >
                 {categories.map((category) => (
                   <option value={category.id} key={category.id}>
