@@ -1,0 +1,38 @@
+@use "../../modules/units.module";
+@use "../../modules/colors.module";
+
+.select {
+  padding: 0 units.$unit * 2;
+  background: colors.$surface;
+  border-radius: units.$round;
+  border: 2px solid colors.$border;
+  outline: none;
+  transition: 0.16s ease-in-out;
+  cursor: pointer;
+
+  font-size: 16px;
+  font-weight: 500;
+  color: colors.$text-secondary;
+
+  option {
+    color: colors.$text-primary;
+    background: colors.$surface;
+  }
+
+  &:focus {
+    border: 2px solid colors.$primary;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+  }
+}
+
+.small {
+  height: units.$small;
+}
+
+.medium {
+  height: units.$medium;
+}
+
+.large {
+  height: units.$large;
+}
