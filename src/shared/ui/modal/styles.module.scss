@@ -1,0 +1,60 @@
+.modal {
+  z-index: 100000;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: none;
+}
+
+.modal_closed {
+  display: none;
+  background: none;
+  backdrop-filter: none;
+}
+
+.modal_opened {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(1px);
+}
+
+.modal_closed {
+  display: none;
+}
+
+.modal_opening {
+  animation: opening linear forwards 0.8s;
+}
+
+.modal_closing {
+  animation: closing linear forwards 0.8s;
+}
+
+@keyframes opening {
+  0% {
+    display: none;
+  }
+  10% {
+    display: block;
+    background: none;
+  }
+  100% {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(1px);
+  }
+}
+
+@keyframes closing {
+  0% {
+    display: block;
+    background: rgba(0, 0, 0, 0.6);
+  }
+  50% {
+    background: none;
+    backdrop-filter: none;
+  }
+  100% {
+    display: none;
+  }
+}
