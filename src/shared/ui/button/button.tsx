@@ -3,7 +3,9 @@ import { ButtonHTMLAttributes } from "react";
 
 import st from "./styles.module.scss";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  size?: "small" | "medium" | "large";
+}
 
 export const Button = (props: ButtonProps) => {
   return (
