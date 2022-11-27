@@ -1,0 +1,50 @@
+@use "../../../shared/modules/units.module";
+@use "../../../shared/modules/breakpoints.module";
+@use "../../../shared/modules/typography.module";
+
+.card {
+  padding: units.$unit * 2;
+
+  @include breakpoints.screen-lg {
+    width: units.$unit * 70;
+  }
+}
+
+.title {
+  @include typography.h4;
+  margin-bottom: units.$unit * 3;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: units.$unit * 2;
+}
+
+.form_top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: units.$unit * 3;
+}
+
+.input_title {
+  width: 100%;
+}
+
+.textarea {
+  width: 100%;
+  resize: none;
+}
+
+.date_time_wrap {
+  display: flex;
+  gap: units.$unit;
+  flex-shrink: 0;
+}
+
+.form_bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
