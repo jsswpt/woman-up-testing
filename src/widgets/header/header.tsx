@@ -12,12 +12,14 @@ const Header = () => {
       <Container className={st.header_container}>
         <div className={classNames(st.header_wrap, st.toggle_task_wrap)}>
           <Button
+            variant="contained"
+            color="primary"
             onClick={() => {
               setCurrentChild(<AddTaskFeature />);
               toggleIsOpen(true);
             }}
           >
-            Новая
+            Новая задача
           </Button>
         </div>
       </Container>

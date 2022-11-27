@@ -12,13 +12,9 @@
   height: 100vh;
   width: units.$sidebar-width;
   background: colors.$surface;
+  overflow-x: hidden;
 
   box-shadow: 0 0 32px rgba(0, 0, 0, 0.05);
-
-  overflow-x: hidden;
-  overflow-y: auto;
-
-  @include presets.scrollbar-small;
 
   @include breakpoints.screen-sm {
     flex-shrink: 0;
@@ -38,7 +34,6 @@
 }
 
 .sidebar_top {
-  margin-bottom: units.$unit * 5;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -52,10 +47,16 @@
 }
 
 .sidebar_middle {
+  padding: units.$unit * 5 0;
+
   display: flex;
   flex-direction: column;
   gap: units.$unit * 5;
   flex-wrap: nowrap;
+  overflow-y: auto;
+
+  max-height: calc(100vh - units.$header-height);
+  @include presets.scrollbar-small;
 }
 
 .closing {
