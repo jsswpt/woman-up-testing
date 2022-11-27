@@ -1,0 +1,27 @@
+@use "../../shared/modules/units.module";
+@use "../../shared/modules/typography.module";
+@use "../../shared/modules/colors.module";
+
+.page_wrap {
+  display: flex;
+  flex-direction: column;
+  gap: units.$unit * 2;
+}
+
+.title {
+  @include typography.h6 {
+    text-align: center;
+  }
+}
+
+.extra_text {
+  @include typography.body2 {
+    text-align: center;
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: colors.$primary;
+  font-weight: 500;
+}

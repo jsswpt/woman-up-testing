@@ -1,0 +1,21 @@
+@use "../../shared/modules/colors.module";
+@use "../../shared/modules/units.module";
+@use "../../shared/modules/typography.module";
+
+.auth_wrap {
+  display: flex;
+  flex-direction: column;
+  gap: units.$unit * 2;
+}
+
+.title {
+  @include typography.h6 {
+    text-align: center;
+  }
+}
+
+.buttons_wrap {
+  display: flex;
+  flex-direction: column;
+  gap: units.$unit;
+}

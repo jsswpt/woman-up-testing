@@ -1,1 +1,1 @@
-export { $categories } from "./model";
+export { $categories, $isLoading, getCategoriesFx, $isGetted } from "./model";

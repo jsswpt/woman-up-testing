@@ -1,14 +1,14 @@
 import { AppModal } from "entities/modal";
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { Loader } from "shared/ui/loader/loader";
-import Header from "widgets/header/header";
 
 import st from "./styles.module.scss";
 
 const Sidebar = React.lazy(() => import("widgets/sidebar/sidebar"));
+const Header = React.lazy(() => import("widgets/header/header"));
 
-export const AppLayout = () => {
+const AppLayout = () => {
   return (
     <>
       <AppModal />
@@ -17,7 +17,7 @@ export const AppLayout = () => {
           <Sidebar />
         </Suspense>
         <div className={st.app_wrap}>
-          <Suspense fallback={<Loader />}>
+          <Suspense>
             <Header />
           </Suspense>
           <main className={st.main}>
@@ -30,3 +30,5 @@ export const AppLayout = () => {
     </>
   );
 };
+
+export default AppLayout;

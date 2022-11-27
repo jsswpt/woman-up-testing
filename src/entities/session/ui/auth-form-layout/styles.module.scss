@@ -1,0 +1,13 @@
+@use "../../../../shared/modules/units.module";
+
+.form_layout {
+  display: flex;
+  flex-direction: column;
+  gap: units.$unit * 2;
+}
+
+.els_wrap {
+  display: flex;
+  flex-direction: column;
+  gap: units.$unit;
+}
