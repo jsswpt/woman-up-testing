@@ -1,17 +1,20 @@
 $primary: #00a6ed;
-$error: #f6511d;
-$danger: #f6b11d;
+$danger: #f6511d;
+$warning: #f6b11d;
 $success: #7fb800;
 
 $on-primary: #fff;
-$on-error: #fff;
+$on-warning: #fff;
 $on-danger: #fff;
 $on-success: #fff;
 
 $background: #f6f6f6;
 $surface: #fff;
 
+$dark-surface: #331c20;
+
 $text-primary: #331c20;
 $text-secondary: #a3a3a3;
+$text-light: $background;
 
 $border: #e6e6e6;

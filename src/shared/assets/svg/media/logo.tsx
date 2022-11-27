@@ -1,4 +1,8 @@
-export const Logo = () => {
+type LogoProps = {
+  className?: any;
+};
+
+export const Logo = (props: LogoProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6,6 +10,7 @@ export const Logo = () => {
       height="41"
       viewBox="0 0 105 41"
       fill="none"
+      className={props.className ? props.className : ""}
     >
       <g clip-path="url(#clip0_323_32)">
         <path

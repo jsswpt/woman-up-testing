@@ -1,0 +1,46 @@
+@use "../../modules/units.module";
+@use "../../modules/typography.module";
+@use "../../modules/colors.module";
+
+.fullwidth {
+  width: 100%;
+}
+
+.input {
+  padding: 0 units.$unit * 2;
+  border: none;
+  outline: none;
+  background: colors.$surface;
+  transition: 0.16s ease-in-out;
+
+  border-radius: units.$round;
+
+  @include typography.body1;
+}
+
+.small {
+  height: units.$small;
+}
+
+.medium {
+  height: units.$medium;
+}
+
+.large {
+  height: units.$large;
+}
+
+.inherit {
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.08);
+  &:focus {
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.16);
+  }
+}
+
+.outlined {
+  border: 2px solid colors.$border;
+
+  &:focus {
+    border: 2px solid colors.$primary;
+  }
+}

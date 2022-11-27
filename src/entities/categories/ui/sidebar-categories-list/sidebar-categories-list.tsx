@@ -1,17 +1,19 @@
 import React, { useCallback } from "react";
-import { useList } from "effector-react";
-import { $categories } from "entities/categories/model";
+import { useList, useStore } from "effector-react";
 import { useNavigate } from "react-router-dom";
 import { routePaths } from "shared/api/internal/consts/route-paths";
 import { SidebarCategoryItem } from "../sidebar-category-item/sidebar-category-item";
 
+import { $categories, $isLoading } from "entities/categories/model";
+
 import st from "./styles.module.scss";
+import { Loader } from "shared/ui/loader/loader";
 
 const SidebarCategoriesList = React.memo(() => {
   const navigate = useNavigate();
 
   const navigateTo = useCallback(
-    (id: string) => navigate(`${routePaths.publicNavigation.CATEGORY}${id}`),
+    (id: string) => navigate(`${routePaths.privateNavigation.CATEGORY}${id}`),
     []
   );
 
@@ -22,7 +24,14 @@ const SidebarCategoriesList = React.memo(() => {
       onClick={() => navigateTo(category.id)}
     />
   ));
-  return <ul className={st.list}>{list}</ul>;
+
+  const isLoading = useStore($isLoading);
+
+  if (!isLoading) {
+    return <ul className={st.list}>{list}</ul>;
+  } else {
+    return <Loader />;
+  }
 });
 
 export default SidebarCategoriesList;
