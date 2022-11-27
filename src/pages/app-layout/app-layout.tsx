@@ -1,3 +1,4 @@
+import { AppModal } from "entities/modal";
 import React, { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import { Loader } from "shared/ui/loader/loader";
@@ -9,20 +10,23 @@ const Sidebar = React.lazy(() => import("widgets/sidebar/sidebar"));
 
 export const AppLayout = () => {
   return (
-    <div className={st.layout}>
-      <Suspense fallback={<Loader />}>
-        <Sidebar />
-      </Suspense>
-      <div className={st.app_wrap}>
-        <Suspense fallback={<Loader />}>
-          <Header />
+    <>
+      <AppModal />
+      <div className={st.layout}>
+        <Suspense>
+          <Sidebar />
         </Suspense>
-        <main className={st.main}>
-          <Suspense fallback={<>Loading page...</>}>
-            <Outlet />
+        <div className={st.app_wrap}>
+          <Suspense fallback={<Loader />}>
+            <Header />
           </Suspense>
-        </main>
+          <main className={st.main}>
+            <Suspense fallback={<>Loading page...</>}>
+              <Outlet />
+            </Suspense>
+          </main>
+        </div>
       </div>
-    </div>
+    </>
   );
 };

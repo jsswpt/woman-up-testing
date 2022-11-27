@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import ReactDOM from "react-dom";
 import { useAnimation } from "shared/lib/useAnimation";
 import st from "./styles.module.scss";
@@ -12,6 +12,7 @@ type ModalProps = {
 };
 
 export const Modal = (props: ModalProps) => {
+  const childrenRef = useRef<HTMLDivElement>(null);
   const animation = useAnimation(props.isOpen, 800);
   const className = props.className || "";
 
@@ -27,9 +28,11 @@ export const Modal = (props: ModalProps) => {
   const modal = useMemo(() => {
     const el = document.createElement("div");
     el.className = classNames(st.modal, className);
-    el.addEventListener("click", () => {
-      props.onClose();
-      animation.toggleAnimation(false);
+    el.addEventListener("click", (evt) => {
+      if (!evt.composedPath().includes(childrenRef.current!)) {
+        props.onClose();
+        animation.toggleAnimation(false);
+      }
     });
 
     return el;
@@ -57,5 +60,9 @@ export const Modal = (props: ModalProps) => {
     }
   }, [animation]);
 
-  return props.isOpen ? ReactDOM.createPortal(props.children, modal) : <></>;
+  return props.isOpen ? (
+    ReactDOM.createPortal(<div ref={childrenRef}>{props.children}</div>, modal)
+  ) : (
+    <></>
+  );
 };

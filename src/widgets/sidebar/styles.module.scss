@@ -51,15 +51,6 @@
   gap: units.$unit;
 }
 
-.logo_title {
-  text-transform: uppercase;
-  font-size: 28px;
-  font-weight: 600;
-  line-height: 28px;
-  letter-spacing: -1px;
-  color: colors.$text-primary;
-}
-
 .sidebar_middle {
   display: flex;
   flex-direction: column;

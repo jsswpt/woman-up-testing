@@ -1,4 +1,4 @@
-import { Category } from "shared/api/internal/types/category.type";
+import { Category } from "shared/api/internal/category/category.type";
 
 interface SidebarCategoryItemProps extends Category {
   onClick?: () => void;
