@@ -42,7 +42,7 @@ const Sidebar = () => {
       >
         <div className={st.sidebar_top}>
           <div className={st.logo_wrap}>
-            <Link to={routePaths.publicNavigation.HOME}>
+            <Link to={routePaths.privateNavigation.HOME}>
               <Logo />
             </Link>
           </div>
