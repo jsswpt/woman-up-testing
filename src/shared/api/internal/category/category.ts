@@ -3,6 +3,7 @@ import { firebaseSheets } from "../consts/firebase-sheets";
 import { Category } from "./category.type";
 
 export const getCategories = async (userId: string) => {
+  console.log("Запрос");
   try {
     const resp = await getDoc(firebaseSheets.CATEGORIES, userId);
 
