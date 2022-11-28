@@ -26,7 +26,6 @@ export const Button = (props: ButtonProps) => {
         [st.button_inherit]: props.variant === "inherit" || !props.variant,
 
         [st.fullwidth]: props.fullwidth,
-        [st.contained_button]: props.variant === "contained",
 
         [st.primary_bg]:
           props.variant === "contained" && props.color === "primary",
@@ -36,6 +35,9 @@ export const Button = (props: ButtonProps) => {
           props.variant === "contained" && props.color === "danger",
         [st.warning_bg]:
           props.variant === "contained" && props.color === "warning",
+        [st.inherit_bg]:
+          props.variant === "contained" &&
+          (props.color === "inherit" || !props.color),
 
         [st.primary_color]:
           props.variant !== "contained" && props.color === "primary",
@@ -47,6 +49,18 @@ export const Button = (props: ButtonProps) => {
           props.variant !== "contained" && props.color === "warning",
         [st.inherit_color]:
           props.variant !== "contained" &&
+          (props.color === "inherit" || !props.color),
+
+        [st.primary_border]:
+          props.variant === "outlined" && props.color === "primary",
+        [st.success_border]:
+          props.variant === "outlined" && props.color === "success",
+        [st.danger_border]:
+          props.variant === "outlined" && props.color === "danger",
+        [st.warning_border]:
+          props.variant === "outlined" && props.color === "warning",
+        [st.inherit_border]:
+          props.variant === "outlined" &&
           (props.color === "inherit" || !props.color),
       })}
     >

@@ -1,35 +1,28 @@
 import classNames from "classnames";
-import { Link, LinkProps } from "react-router-dom";
-
+import { ButtonHTMLAttributes } from "react";
 import st from "./styles.module.scss";
 
-interface ButtonLink extends LinkProps {
+interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: "small" | "medium" | "large";
   variant?: "contained" | "outlined" | "inherit";
   color?: "primary" | "success" | "danger" | "warning" | "inherit";
-  fullwidth?: boolean;
 }
 
-export const ButtonLink = (props: ButtonLink) => {
+export const IconButton = (props: IconButtonProps) => {
   return (
-    <Link
+    <button
       {...props}
       className={classNames(
-        st.button,
-        st.button_link,
+        st.icon_button,
         props.className ? props.className : "",
         {
-          [st.small]: props.size === "small",
-          [st.medium]: props.size === "medium" || !props.size,
-          [st.large]: props.size === "large",
+          [st.icon_button_small]: props.size === "small",
+          [st.icon_button_medium]: props.size === "medium" || !props.size,
+          [st.icon_button_large]: props.size === "large",
 
           [st.contained]: props.variant === "contained",
           [st.outlined]: props.variant === "outlined",
           [st.inherit]: props.variant === "inherit" || !props.variant,
-
-          [st.button_inherit]: props.variant === "inherit" || !props.variant,
-
-          [st.fullwidth]: props.fullwidth,
 
           [st.primary_bg]:
             props.variant === "contained" && props.color === "primary",
@@ -70,6 +63,6 @@ export const ButtonLink = (props: ButtonLink) => {
       )}
     >
       {props.children}
-    </Link>
+    </button>
   );
 };

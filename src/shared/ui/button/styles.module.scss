@@ -13,6 +13,13 @@
   transition: 0.16s ease-in-out;
   cursor: pointer;
 
+  &:hover {
+    transform: scale(1.02);
+  }
+  &:active {
+    transform: scale(0.98);
+  }
+
   @include typography.button;
 }
 
@@ -49,8 +56,12 @@
 }
 
 .inherit {
-  background: colors.$dark-surface;
+  background: rgb(243, 243, 243);
   color: colors.$text-light;
+
+  &:hover {
+    background: rgb(200, 200, 200);
+  }
 }
 
 .primary_color {
@@ -66,10 +77,10 @@
   color: colors.$warning;
 }
 .inherit_color {
-  color: colors.$text-light;
+  color: colors.$text-primary;
 }
 
-.contained_button {
+.contained {
   color: colors.$text-light;
 }
 
@@ -86,10 +97,82 @@
   background: colors.$warning;
 }
 .inherit_bg {
-  background: colors.$text-light;
+  background: colors.$dark-surface;
+  color: colors.$text-light;
 }
 
 .button:disabled {
   cursor: default;
   background: rgb(206, 206, 206);
+}
+
+.icon_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+
+  transition: 0.16s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+.icon_button_small {
+  height: units.$small;
+  width: units.$small;
+
+  svg {
+    width: units.$small - units.$unit * 2;
+    height: units.$small - units.$unit * 2;
+  }
+}
+
+.icon_button_medium {
+  height: units.$medium;
+  width: units.$medium;
+  svg {
+    width: units.$medium - units.$unit * 2;
+    height: units.$medium - units.$unit * 2;
+  }
+}
+
+.icon_button_large {
+  height: units.$large;
+  width: units.$large;
+  svg {
+    width: units.$large - units.$unit * 2;
+    height: units.$large - units.$unit * 2;
+  }
+}
+
+.outlined {
+  background: none;
+  cursor: pointer;
+}
+
+.primary_border {
+  border: 1px solid colors.$primary;
+}
+
+.success_border {
+  border: 1px solid colors.$success;
+}
+
+.warning_border {
+  border: 1px solid colors.$warning;
+}
+
+.danger_border {
+  border: 1px solid colors.$danger;
+}
+
+.inherit_border {
+  border: 1px solid colors.$border;
 }
