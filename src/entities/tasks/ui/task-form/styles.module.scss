@@ -2,24 +2,6 @@
 @use "../../../../shared/modules/breakpoints.module";
 @use "../../../../shared/modules/typography.module";
 
-.card {
-  padding: units.$unit * 2;
-
-  @include breakpoints.screen-xs {
-    width: 100%;
-
-    input {
-      width: 100%;
-    }
-    select {
-      width: 100%;
-    }
-  }
-  @include breakpoints.screen-sm {
-    width: units.$unit * 70;
-  }
-}
-
 .title {
   @include typography.h4;
   margin-bottom: units.$unit * 3;

@@ -1,5 +1,9 @@
+import { Suspense } from "react";
+import { setCurrentChild, toggleIsOpen } from "entities/modal";
+import RemoveTaskFeature from "feature/remove-task-feature/ui/remove-task-feature";
 import ToggleTaskStateFeature from "feature/toggle-task-state-feature/ui/toggle-task-feature";
 import React, { useMemo } from "react";
+import { MdRemove } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { routePaths } from "shared/api/internal/consts/route-paths";
 import { IconButton } from "shared/ui/button/icon-button";
@@ -43,7 +47,21 @@ export const TaskCard = React.memo((props: TaskCardProps) => {
           color="warning"
         ></IconButton>
         <ToggleTaskStateFeature taskId={props.id} />
-        <IconButton size="small" variant="outlined" color="danger"></IconButton>
+        <IconButton
+          size="small"
+          variant="outlined"
+          color="danger"
+          onClick={() => {
+            setCurrentChild(
+              <Suspense>
+                <RemoveTaskFeature taskId={props.id} />
+              </Suspense>
+            );
+            toggleIsOpen(true);
+          }}
+        >
+          <MdRemove />
+        </IconButton>
       </div>
     </Card>
   );

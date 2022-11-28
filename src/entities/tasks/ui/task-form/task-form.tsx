@@ -5,6 +5,7 @@ import { Button } from "shared/ui/button/button";
 import { Card } from "shared/ui/card/card";
 import { Input } from "shared/ui/input/input";
 import { Textarea } from "shared/ui/input/textarea";
+import { ModalCard } from "shared/ui/modal-card/modal-card";
 import { Select } from "shared/ui/select/select";
 import st from "./styles.module.scss";
 
@@ -25,7 +26,7 @@ type TaskFormProps = {
 
 export const TaskForm = (props: TaskFormProps) => {
   return (
-    <Card className={st.card}>
+    <ModalCard>
       <h4 className={st.title}>{props.title}</h4>
       <form
         className={st.form}
@@ -89,6 +90,6 @@ export const TaskForm = (props: TaskFormProps) => {
           </Button>
         </div>
       </form>
-    </Card>
+    </ModalCard>
   );
 };

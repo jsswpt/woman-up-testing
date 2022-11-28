@@ -1,0 +1,20 @@
+@use "../../modules/breakpoints.module";
+@use "../../modules/units.module";
+
+.card {
+  padding: units.$unit * 2;
+
+  @include breakpoints.screen-xs {
+    width: 100%;
+
+    input {
+      width: 100%;
+    }
+    select {
+      width: 100%;
+    }
+  }
+  @include breakpoints.screen-sm {
+    width: units.$unit * 70;
+  }
+}
