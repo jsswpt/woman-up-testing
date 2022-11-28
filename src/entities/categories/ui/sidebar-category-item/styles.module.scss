@@ -1,0 +1,32 @@
+@use "../../../../shared/modules/units.module";
+@use "../../../../shared/modules/typography.module";
+@use "../../../../shared/modules/colors.module";
+
+.link {
+  position: relative;
+  padding: 0 units.$unit;
+  display: flex;
+  align-items: center;
+  min-height: units.$small;
+  transition: 0.16s ease-in-out;
+  width: 100%;
+  flex-shrink: 0;
+
+  @include typography.body1 {
+    text-decoration: none;
+  }
+}
+
+.active {
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: units.$unit * 3;
+    height: units.$unit * 2.5;
+    background: colors.$primary;
+    transform: translate(0, -50%);
+    border-radius: 16px 0 0 16px;
+  }
+}

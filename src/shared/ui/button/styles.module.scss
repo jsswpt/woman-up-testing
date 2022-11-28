@@ -4,7 +4,7 @@
 
 .button {
   padding: 0 units.$unit * 2;
-  min-width: units.$unit * 25;
+  min-width: units.$unit * 15;
 
   border: none;
   outline: none;
@@ -12,6 +12,8 @@
 
   transition: 0.16s ease-in-out;
   cursor: pointer;
+
+  flex-shrink: 0;
 
   &:hover {
     transform: scale(1.02);
@@ -27,6 +29,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  flex-shrink: 0;
 
   a {
     text-decoration: none;
@@ -61,6 +65,7 @@
 
   &:hover {
     background: rgb(200, 200, 200);
+    color: colors.$text-primary;
   }
 }
 
@@ -113,6 +118,8 @@
   border-radius: 50%;
   border: none;
   outline: none;
+
+  flex-shrink: 0;
 
   transition: 0.16s ease-in-out;
 

@@ -1,0 +1,18 @@
+@use "../../../../shared/modules/typography.module";
+@use "../../../../shared/modules/units.module";
+
+.title {
+  @include typography.h4;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: units.$unit * 2;
+}
+
+.buttons_wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

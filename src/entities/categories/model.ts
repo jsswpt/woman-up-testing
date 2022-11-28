@@ -10,10 +10,7 @@ import { Category } from "shared/api/internal/category/category.type";
 
 export const getCategoriesFx = createEffect(getCategories);
 
-export const $categories = createStore<Category[]>([
-  { creationDate: new Date(), id: "anyid", name: "Дом", ownerId: "sadsad" },
-  { creationDate: new Date(), id: "anyid2", name: "Работа", ownerId: "asdasd" },
-]);
+export const $categories = createStore<Category[]>([]);
 
 export const $isGetted = createStore(false);
 

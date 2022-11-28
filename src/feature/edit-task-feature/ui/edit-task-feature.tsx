@@ -5,7 +5,7 @@ import {
   onFeatureLoaded,
   addFile,
   removeFile,
-  editTask,
+  onButtonClicked,
   setCategoryId,
   setDeadline,
   setDescription,
@@ -35,6 +35,7 @@ const EditTaskFeature = (props: { taskId: string }) => {
         categories={categories}
         categoryFallback={<></>}
         initialCategoryId={task!.categoryId}
+        onFileChange={() => {}}
         onCategorySelect={(evt) => setCategoryId(evt.currentTarget.value)}
         onDescriptionChange={(evt) => setDescription(evt.currentTarget.value)}
         onDeadlineChange={(evt) =>
@@ -43,7 +44,8 @@ const EditTaskFeature = (props: { taskId: string }) => {
         onTitleChange={(evt) => setTitle(evt.currentTarget.value)}
         onSubmit={(evt) => {
           evt.preventDefault();
-          editTask();
+          onButtonClicked();
+          toggleIsOpen(false);
         }}
         onReset={(evt) => {
           evt.preventDefault();

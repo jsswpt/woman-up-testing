@@ -1,7 +1,9 @@
 import { useCallback } from "react";
 import { useStore } from "effector-react";
 import { $currentTasks, $tasks } from "entities/tasks";
-import { createEvent, sample } from "effector";
+import { createEffect, createEvent, sample } from "effector";
+import { Task } from "shared/api/internal/task/task.type";
+import { editTask } from "shared/api/internal/task/task";
 
 export const useToggleTaskFeature = (taskId: string) => {
   const tasks = useStore($currentTasks);
@@ -9,20 +11,35 @@ export const useToggleTaskFeature = (taskId: string) => {
   let findedTask = tasks.find((task) => task.id === taskId)!;
 
   const toggleTaskState = useCallback(() => {
-    toggleTask(taskId);
+    onButtonClicked(findedTask);
   }, []);
 
   return { findedTask, toggleTaskState };
 };
 
-const toggleTask = createEvent<string>();
+const toggleTaskFx = createEffect(editTask);
+
+const onButtonClicked = createEvent<Task>();
+
+const toggleTask = createEvent<Task>();
+
+sample({
+  clock: onButtonClicked,
+  fn: (task) => ({ ...task!, isDone: !task!.isDone }),
+  target: toggleTaskFx,
+});
+
+sample({
+  clock: toggleTaskFx.doneData,
+  target: toggleTask,
+});
 
 sample({
   clock: toggleTask,
   source: $tasks,
   fn: (tasks, taskId) => {
     const newTasks = tasks.map((task) =>
-      task.id === taskId ? { ...task, isDone: !task.isDone } : task
+      task.id === taskId.id ? { ...task, isDone: !task.isDone } : task
     );
 
     return newTasks;

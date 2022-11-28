@@ -3,7 +3,7 @@ import { Card } from "../card/card";
 import st from "./styles.module.scss";
 
 type ModalCardProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 export const ModalCard = (props: ModalCardProps) => {

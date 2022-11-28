@@ -3,6 +3,9 @@
 
 .card {
   padding: units.$unit * 2;
+  display: flex;
+  flex-direction: column;
+  gap: units.$unit * 2;
 
   @include breakpoints.screen-xs {
     width: 100%;

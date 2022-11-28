@@ -9,15 +9,15 @@ import { useAnimation } from "shared/lib/useAnimation";
 import { IconButton } from "shared/ui/button/icon-button";
 import { Link } from "react-router-dom";
 import { routePaths } from "shared/api/internal/consts/route-paths";
+import { Button } from "shared/ui/button/button";
+import { setCurrentChild, toggleIsOpen } from "entities/modal";
+import { AddCategoryFeature } from "feature/add-category-feature/ui/add-category-feature";
 
-const SidebarCategoriesList = React.lazy(
-  () =>
-    import(
-      "entities/categories/ui/sidebar-categories-list/sidebar-categories-list"
-    )
-);
+type SidebarProps = {
+  categoriesList: React.ReactNode;
+};
 
-const Sidebar = () => {
+const Sidebar = (props: SidebarProps) => {
   const screen = useScreen();
   const state = useAnimation(screen === "lg", 750);
 
@@ -54,37 +54,20 @@ const Sidebar = () => {
         </div>
         <div className={st.sidebar_middle}>
           <SidebarBlockLayout title="Категории">
-            <Suspense>
-              <SidebarCategoriesList />
-            </Suspense>
+            {props.categoriesList}
+            <Button
+              fullwidth
+              size="small"
+              color="primary"
+              onClick={() => {
+                setCurrentChild(<AddCategoryFeature />);
+                toggleIsOpen(true);
+              }}
+            >
+              Новая
+            </Button>
           </SidebarBlockLayout>
           <SidebarBlockLayout title="Условный блок"></SidebarBlockLayout>
-          <SidebarBlockLayout title="Ещё условный блок">
-            условный блок
-          </SidebarBlockLayout>
-          <SidebarBlockLayout title="Ещё условный блок">
-            условный блок
-          </SidebarBlockLayout>
-          <SidebarBlockLayout title="Категории">категории</SidebarBlockLayout>
-          <SidebarBlockLayout title="Условный блок">
-            лист категорий
-          </SidebarBlockLayout>
-          <SidebarBlockLayout title="Ещё условный блок">
-            условный блок
-          </SidebarBlockLayout>
-          <SidebarBlockLayout title="Ещё условный блок">
-            условный блок
-          </SidebarBlockLayout>
-          <SidebarBlockLayout title="Категории">категории</SidebarBlockLayout>
-          <SidebarBlockLayout title="Условный блок">
-            лист категорий
-          </SidebarBlockLayout>
-          <SidebarBlockLayout title="Ещё условный блок">
-            условный блок
-          </SidebarBlockLayout>
-          <SidebarBlockLayout title="Ещё условный блок">
-            условный блок
-          </SidebarBlockLayout>
         </div>
       </div>
     </>

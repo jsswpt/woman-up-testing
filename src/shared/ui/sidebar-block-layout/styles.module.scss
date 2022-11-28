@@ -1,0 +1,12 @@
+@use "../../modules/units.module";
+@use "../../modules/typography.module";
+
+.sidebar_block {
+  display: flex;
+  flex-direction: column;
+  gap: units.$unit * 2;
+}
+
+.block_title {
+  @include typography.h5;
+}

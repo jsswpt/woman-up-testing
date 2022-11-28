@@ -13,7 +13,7 @@ type ModalProps = {
 
 export const Modal = (props: ModalProps) => {
   const childrenRef = useRef<HTMLDivElement>(null);
-  const animation = useAnimation(props.isOpen, 800);
+  const animation = useAnimation(props.isOpen, 180);
   const className = props.className || "";
 
   useEffect(() => {

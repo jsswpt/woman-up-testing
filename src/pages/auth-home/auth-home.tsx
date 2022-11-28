@@ -11,10 +11,19 @@ const AuthHome = () => {
         Тестовое задание для WomanUP. Для старта зарегистрируйтесь
       </p>
       <div className={st.buttons_wrap}>
-        <ButtonLink to={routePaths.publicNavigation.SIGN_IN} fullwidth>
+        <ButtonLink
+          to={routePaths.publicNavigation.SIGN_IN}
+          variant="contained"
+          color="primary"
+          fullwidth
+        >
           Войти
         </ButtonLink>
-        <ButtonLink to={routePaths.publicNavigation.SIGN_UP} fullwidth>
+        <ButtonLink
+          to={routePaths.publicNavigation.SIGN_UP}
+          variant="contained"
+          fullwidth
+        >
           Регистрация
         </ButtonLink>
       </div>

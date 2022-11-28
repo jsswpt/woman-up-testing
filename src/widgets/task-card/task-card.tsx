@@ -19,7 +19,7 @@ const EditTaskFeature = React.lazy(
 
 interface TaskCardProps {
   title: string;
-  files: number;
+  file: string | null;
   creationDate: string;
   description: string | null;
   deadline: string;
@@ -33,6 +33,16 @@ export const TaskCard = React.memo((props: TaskCardProps) => {
       <div>
         <p className={st.task_title}>{props.title}</p>
       </div>
+      {props.file && (
+        <div>
+          <p className={st.task_description}>
+            Файл:{" "}
+            <a href={props.file} target="_blank">
+              Тут
+            </a>
+          </p>
+        </div>
+      )}
       <div className={st.description_wrap}>
         <p className={st.task_description}>{props.description}</p>
       </div>

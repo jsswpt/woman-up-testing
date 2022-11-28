@@ -13,7 +13,7 @@ type TaskFormProps = {
   onSubmit: (evt: React.FormEvent<HTMLFormElement>) => void;
   onReset: (evt: React.FormEvent<HTMLFormElement>) => void;
   categories: Category[];
-  task: Omit<Task, "isDone">;
+  task: Omit<Task, "isDone" | "file">;
   onTitleChange: (evt: React.FormEvent<HTMLInputElement>) => void;
   onDescriptionChange: (evt: React.FormEvent<HTMLTextAreaElement>) => void;
   onDeadlineChange: (evt: React.FormEvent<HTMLInputElement>) => void;
@@ -22,6 +22,7 @@ type TaskFormProps = {
   categoryFallback: React.ReactNode;
   title: string;
   submitButtonTitle: string;
+  onFileChange: (evt: React.FormEvent<HTMLInputElement>) => void;
 };
 
 export const TaskForm = (props: TaskFormProps) => {
@@ -57,12 +58,15 @@ export const TaskForm = (props: TaskFormProps) => {
             )}
           </div>
         </div>
-        <div className={st.form_middle}>
+        <div className={st.premiddle_wrap}>
           <Input
             onChange={props.onDeadlineChange}
             type="date"
             value={dayjs(props.task.deadline).format("YYYY-MM-DD").toString()}
           />
+          <Input type="file" onChange={props.onFileChange} />
+        </div>
+        <div className={st.form_middle}>
           <Textarea
             onChange={props.onDescriptionChange}
             rows={5}
@@ -77,6 +81,7 @@ export const TaskForm = (props: TaskFormProps) => {
             className={st.create_button}
             color="primary"
             variant="contained"
+            disabled={!props.task.categoryId}
           >
             {props.submitButtonTitle}
           </Button>

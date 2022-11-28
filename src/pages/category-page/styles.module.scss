@@ -1,6 +1,7 @@
 @use "../../shared/modules/breakpoints.module";
 @use "../../shared/modules/units.module";
 @use "../../shared/modules/typography.module";
+@use "../../shared/modules/colors.module";
 
 $gap: units.$unit * 2;
 
@@ -23,6 +24,7 @@ $gap: units.$unit * 2;
 
 .filters_wrap {
   display: flex;
+  align-items: center;
   gap: $gap;
 }
 
@@ -47,4 +49,11 @@ $gap: units.$unit * 2;
   }
 
   list-style: none;
+}
+
+.empty_title {
+  @include typography.h5 {
+    text-align: center;
+    color: colors.$text-secondary;
+  }
 }

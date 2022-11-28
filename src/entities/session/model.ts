@@ -16,8 +16,14 @@ export const $isAuthorized = createStore(false);
 export const $isGetted = createStore(false);
 export const $isLoading = getUserAccountFx.pending;
 
+export const toggleIsGetted = createEvent<boolean>();
+
 $isGetted.on(getUserAccountFx.doneData, (_, user) => {
   return true;
+});
+
+$isGetted.on(toggleIsGetted, (_, isGetted) => {
+  return isGetted;
 });
 
 sample({

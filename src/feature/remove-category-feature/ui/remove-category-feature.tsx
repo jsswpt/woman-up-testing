@@ -1,25 +1,21 @@
 import { toggleIsOpen } from "entities/modal";
 import React from "react";
 import { Button } from "shared/ui/button/button";
-import { Card } from "shared/ui/card/card";
 import { ModalCard } from "shared/ui/modal-card/modal-card";
-import { useRemoveTask } from "../model";
+import { useRemoveCategory } from "../model";
 
 import st from "./styles.module.scss";
 
-const RemoveTaskFeature = (props: { taskId: string }) => {
-  const model = useRemoveTask(props.taskId);
+const RemoveCategoryFeature = (props: { categoryId: string }) => {
+  const model = useRemoveCategory(props.categoryId);
   return (
     <ModalCard>
-      <div className={st.card_top}>
-        <h4 className={st.title}>Удалить задачу</h4>
-        <p className={st.sure}>Подтвердите удаление задачи</p>
-      </div>
-
+      <h4 className={st.title}>Удаление категории</h4>
+      <p className={st.confirm}>Подтвердите удаление категории</p>
       <form
         onSubmit={(evt) => {
           evt.preventDefault();
-          model.removeTask();
+          model.removeCategory();
           toggleIsOpen(false);
         }}
         onReset={(evt) => {
@@ -40,4 +36,4 @@ const RemoveTaskFeature = (props: { taskId: string }) => {
   );
 };
 
-export default RemoveTaskFeature;
+export default RemoveCategoryFeature;

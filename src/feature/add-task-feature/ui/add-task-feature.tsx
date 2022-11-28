@@ -1,49 +1,73 @@
 import { useStore } from "effector-react";
 import { $categories } from "entities/categories";
-import { $currentCategory, setCurrentCategory, TaskForm } from "entities/tasks";
+import { TaskForm } from "entities/tasks";
 import { useEffect } from "react";
 
 import {
   $task,
   addFile,
-  addTask,
+  onButtonClicked,
   removeFile,
   setCategoryId,
   setDeadline,
   setDescription,
+  $isLoading,
   setTitle,
 } from "../model";
 import { setCurrentChild, toggleIsOpen } from "entities/modal/index";
 import dayjs from "dayjs";
 import { Card } from "shared/ui/card/card";
 import { Loader } from "shared/ui/loader/loader";
+import { useParams } from "react-router-dom";
+import { Button } from "shared/ui/button/button";
+import { AddCategoryFeature } from "feature/add-category-feature/ui/add-category-feature";
+import { ModalCard } from "shared/ui/modal-card/modal-card";
 
 export const AddTaskFeature = () => {
   const task = useStore($task);
   const categories = useStore($categories);
-  const currentCategory = useStore($currentCategory);
+
+  const isLoading = useStore($isLoading);
+
+  const { categoryId } = useParams();
 
   useEffect(() => {
-    if (currentCategory) {
-      setCategoryId(currentCategory);
+    if (categoryId) {
+      setCategoryId(categoryId);
+      return;
+    } else if (categories.length) {
+      setCategoryId(categories[0].id);
+      return;
     }
   }, []);
 
-  if (task)
+  if (task && !isLoading) {
     return (
       <TaskForm
         title="Новая задача"
         submitButtonTitle="Создать"
         onSubmit={(evt) => {
           evt.preventDefault();
-          addTask();
+          onButtonClicked();
         }}
         onReset={(evt) => toggleIsOpen(false)}
+        onFileChange={(evt) => {
+          const file = evt.currentTarget.files![0];
+          addFile(file);
+        }}
         onTitleChange={(evt) => setTitle(evt.currentTarget.value)}
         task={task}
         categories={categories}
-        categoryFallback={<>Добавить категорию</>}
-        initialCategoryId={categories[0].id}
+        categoryFallback={
+          <Button
+            variant="contained"
+            fullwidth
+            onClick={() => setCurrentChild(<AddCategoryFeature />)}
+          >
+            Создать
+          </Button>
+        }
+        initialCategoryId={categoryId!}
         onCategorySelect={(evt) => setCategoryId(evt.currentTarget.value)}
         onDeadlineChange={(evt) =>
           setDeadline(dayjs(evt.currentTarget.value).toDate())
@@ -51,10 +75,13 @@ export const AddTaskFeature = () => {
         onDescriptionChange={(evt) => setDescription(evt.currentTarget.value)}
       />
     );
-
-  return (
-    <Card>
-      <Loader />
-    </Card>
-  );
+  }
+  if (isLoading) {
+    return (
+      <ModalCard>
+        <Loader />
+      </ModalCard>
+    );
+  }
+  return <ModalCard></ModalCard>;
 };

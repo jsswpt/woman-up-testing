@@ -1,0 +1,28 @@
+@use "../../shared/modules/colors.module";
+@use "../../shared/modules/units.module";
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: units.$unit;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: units.$unit;
+}
+
+.buttons_wrap {
+  display: flex;
+  align-items: center;
+  gap: units.$unit;
+}
+.link {
+  width: 100%;
+  transition: 0.16s ease-in-out;
+
+  &:hover {
+    background: rgb(238, 238, 238);
+  }
+}

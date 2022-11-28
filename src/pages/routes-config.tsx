@@ -57,9 +57,6 @@ export const privateRoutes = createBrowserRouter([
       },
       {
         path: "*",
-        action: (arg) => {
-          console.log(arg);
-        },
         loader: (arg) => {
           // Не думаю, что это нужно реализовывать именно таким образом,
           // но, пока что, пусть будет так

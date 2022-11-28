@@ -1,17 +1,25 @@
+import classNames from "classnames";
+import { Link, useParams } from "react-router-dom";
 import { Category } from "shared/api/internal/category/category.type";
+import { routePaths } from "shared/api/internal/consts/route-paths";
 
-interface SidebarCategoryItemProps extends Category {
-  onClick?: () => void;
+import st from "./styles.module.scss";
+
+interface SidebarCategoryItemProps {
+  id: string;
+  title: string;
 }
 
 export const SidebarCategoryItem = (props: SidebarCategoryItemProps) => {
+  const { categoryId } = useParams();
   return (
-    <li
-      onClick={() => {
-        if (props.onClick) props.onClick();
-      }}
+    <Link
+      to={routePaths.privateNavigation.CATEGORY + props.id}
+      className={classNames(st.link, {
+        [st.active]: props.id === categoryId,
+      })}
     >
-      <p>{props.name}</p>
-    </li>
+      <p>{props.title}</p>
+    </Link>
   );
 };

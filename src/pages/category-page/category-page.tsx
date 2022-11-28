@@ -1,18 +1,26 @@
-import React, { Suspense } from "react";
+import { useEffect } from "react";
 import { useList, useStore } from "effector-react";
-import { $finalTasks } from "entities/tasks";
+import {
+  $finalTasks,
+  $isLoading,
+  $finalTasksLength,
+  onPageLoaded,
+} from "entities/tasks";
 import { Container } from "shared/ui/container/container";
-import st from "./styles.module.scss";
 import { dateFormatter } from "shared/lib/dateFormatter";
 import { Select } from "shared/ui/select/select";
 import { TaskCard } from "widgets/task-card/task-card";
+import { useParams } from "react-router-dom";
+
+import st from "./styles.module.scss";
+import { Loader } from "shared/ui/loader/loader";
 
 const CategoryPage = () => {
   const currentTasks = useList($finalTasks, (task) => (
     <li>
       <TaskCard
         id={task.id}
-        files={8}
+        file={task.file}
         title={task.title}
         creationDate={dateFormatter(task.creationDate)}
         deadline={dateFormatter(task.deadline)}
@@ -22,28 +30,39 @@ const CategoryPage = () => {
       />
     </li>
   ));
+
+  const currentTasksLength = useStore($finalTasksLength);
+
+  const isLoading = useStore($isLoading);
+
+  const { categoryId } = useParams();
+
+  useEffect(() => {
+    onPageLoaded();
+  }, [categoryId]);
+
   return (
     <section className={st.task_section}>
       <Container>
         <div className={st.section_top}>
           <h3 className={st.title}>Задачи</h3>
           <div className={st.filters_wrap}>
-            <Select
-              placeholder="???"
-              defaultValue={12}
-              name=""
-              id=""
-              className={st.select}
-            >
-              <option value={12}>Что???</option>
-              <option value={123}>Что???</option>
-            </Select>
-            <Select name="" id="" className={st.select}></Select>
+            <p>Можно поставить фильтрацию / сортировку</p>
           </div>
         </div>
-        <div>
-          <ul className={st.tasks_grid}>{currentTasks}</ul>
-        </div>
+        {!isLoading ? (
+          <div>
+            {currentTasksLength ? (
+              <ul className={st.tasks_grid}>{currentTasks}</ul>
+            ) : (
+              <h5 className={st.empty_title}>
+                Список задач в данной категории пуст
+              </h5>
+            )}
+          </div>
+        ) : (
+          <Loader />
+        )}
       </Container>
     </section>
   );

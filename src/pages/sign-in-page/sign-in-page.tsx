@@ -12,7 +12,7 @@ const SignInPage = () => {
     <div className={st.page_wrap}>
       <div className={st.text_wrap}>
         <p className={st.title}>
-          Войдите в аккаунт, чтобы продолжить планирование задач
+          Вход в аккаунт не реализован. Просто создай новый
         </p>
       </div>
       <div className={st.inner_wrap}>

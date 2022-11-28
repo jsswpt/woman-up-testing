@@ -1,0 +1,31 @@
+@use "../../../shared/modules/typography.module";
+@use "../../../shared/modules/breakpoints.module";
+@use "../../../shared/modules/units.module";
+
+.title {
+  @include typography.h4;
+}
+.confirm {
+  @include typography.body1;
+}
+
+.buttons_wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include breakpoints.screen-xs {
+    flex-direction: column;
+    gap: units.$unit;
+    button {
+      width: 100%;
+    }
+  }
+  @include breakpoints.screen-sm {
+    flex-direction: row;
+    gap: 0;
+    button {
+      width: fit-content;
+    }
+  }
+}
