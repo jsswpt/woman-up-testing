@@ -8,4 +8,4 @@ export {
   $currentCategory,
   setCurrentCategory,
 } from "./model";
-export { TaskCard } from "./ui/task-card/task-card";
+export { TaskCard } from "../../widgets/task-card/task-card";
