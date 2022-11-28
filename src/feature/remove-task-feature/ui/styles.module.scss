@@ -1,0 +1,39 @@
+@use "../../../shared/modules/units.module";
+@use "../../../shared/modules/typography.module";
+@use "../../../shared/modules/breakpoints.module";
+
+.card_top {
+  margin-bottom: units.$unit * 3;
+}
+
+.title {
+  @include typography.h4;
+  margin-bottom: units.$unit * 3;
+}
+
+.sure {
+  @include typography.body1;
+}
+
+.buttons_wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include breakpoints.screen-xs {
+    flex-direction: column;
+    gap: units.$unit;
+
+    button {
+      width: 100%;
+    }
+  }
+  @include breakpoints.screen-sm {
+    flex-direction: row;
+    gap: units.$unit;
+
+    button {
+      width: fit-content;
+    }
+  }
+}
