@@ -6,7 +6,7 @@ import { SidebarBlockLayout } from "shared/ui/sidebar-block-layout/sidebar-block
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 import st from "./styles.module.scss";
 import { useAnimation } from "shared/lib/useAnimation";
-import { IconButton } from "shared/ui/icon-button/icon-button";
+import { IconButton } from "shared/ui/button/icon-button";
 import { Link } from "react-router-dom";
 import { routePaths } from "shared/api/internal/consts/route-paths";
 

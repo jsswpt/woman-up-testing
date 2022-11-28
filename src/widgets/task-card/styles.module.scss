@@ -1,0 +1,72 @@
+@use "../../shared/modules/colors.module";
+@use "../../shared/modules/units.module";
+@use "../../shared/modules/typography.module";
+@use "../../shared/modules/presets.module";
+
+.task_card {
+  padding: units.$unit * 2;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: units.$unit;
+  border: 1px solid colors.$border;
+}
+
+.description_wrap {
+  overflow-y: hidden;
+
+  @include presets.scrollbar-small;
+}
+
+.task_description {
+  @include typography.subtitle2 {
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.creation_deadline_wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.task_title {
+  @include typography.h6;
+}
+
+.detail {
+  @include typography.body2;
+}
+
+.link {
+  align-self: center;
+  position: relative;
+  @include typography.body2 {
+    color: colors.$primary;
+    text-decoration: none;
+  }
+  &::before {
+    position: absolute;
+    content: "";
+    left: 50%;
+    bottom: -2px;
+    height: 1px;
+    width: 0;
+    background: colors.$primary;
+    transform: translate(-50%);
+    transition: 0.16s ease-in-out;
+  }
+  &:hover::before {
+    width: 100%;
+    background: colors.$primary;
+  }
+}
+
+.extra_els {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -5,5 +5,6 @@ export type Task = {
   description: string | null;
   creationDate: Date;
   deadline: Date;
+  isDone: boolean;
   files: File[] | null;
 };

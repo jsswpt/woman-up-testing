@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { useList, useStore } from "effector-react";
 import { $finalTasks, TaskCard } from "entities/tasks";
 import { Container } from "shared/ui/container/container";
@@ -15,6 +15,8 @@ const CategoryPage = () => {
         title={task.title}
         creationDate={dateFormatter(task.creationDate)}
         deadline={dateFormatter(task.deadline)}
+        description={task.description}
+        isDone={task.isDone}
         key={task.id}
       />
     </li>
