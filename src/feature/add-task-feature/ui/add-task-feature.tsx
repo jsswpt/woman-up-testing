@@ -15,6 +15,8 @@ import {
 } from "../model";
 import { setCurrentChild, toggleIsOpen } from "entities/modal/index";
 import dayjs from "dayjs";
+import { Card } from "shared/ui/card/card";
+import { Loader } from "shared/ui/loader/loader";
 
 export const AddTaskFeature = () => {
   const task = useStore($task);
@@ -27,25 +29,32 @@ export const AddTaskFeature = () => {
     }
   }, []);
 
+  if (task)
+    return (
+      <TaskForm
+        title="Новая задача"
+        submitButtonTitle="Создать"
+        onSubmit={(evt) => {
+          evt.preventDefault();
+          addTask();
+        }}
+        onReset={(evt) => toggleIsOpen(false)}
+        onTitleChange={(evt) => setTitle(evt.currentTarget.value)}
+        task={task}
+        categories={categories}
+        categoryFallback={<>Добавить категорию</>}
+        initialCategoryId={categories[0].id}
+        onCategorySelect={(evt) => setCategoryId(evt.currentTarget.value)}
+        onDeadlineChange={(evt) =>
+          setDeadline(dayjs(evt.currentTarget.value).toDate())
+        }
+        onDescriptionChange={(evt) => setDescription(evt.currentTarget.value)}
+      />
+    );
+
   return (
-    <TaskForm
-      title="Новая задача"
-      submitButtonTitle="Создать"
-      onSubmit={(evt) => {
-        evt.preventDefault();
-        addTask();
-      }}
-      onReset={(evt) => toggleIsOpen(false)}
-      onTitleChange={(evt) => setTitle(evt.currentTarget.value)}
-      task={task}
-      categories={categories}
-      categoryFallback={<>Добавить категорию</>}
-      initialCategoryId={categories[0].id}
-      onCategorySelect={(evt) => setCategoryId(evt.currentTarget.value)}
-      onDeadlineChange={(evt) =>
-        setDeadline(dayjs(evt.currentTarget.value).toDate())
-      }
-      onDescriptionChange={(evt) => setDescription(evt.currentTarget.value)}
-    />
+    <Card>
+      <Loader />
+    </Card>
   );
 };
