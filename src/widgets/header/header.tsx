@@ -1,13 +1,17 @@
+import React, { Suspense } from "react";
 import classNames from "classnames";
 import { useStore } from "effector-react";
 import { setCurrentChild, toggleIsOpen } from "entities/modal";
 import { $session } from "entities/session";
-import { AddTaskFeature } from "feature";
-import React from "react";
+
 import { useScreen } from "shared/lib/useScreen";
 import { Button } from "shared/ui/button/button";
 import { Container } from "shared/ui/container/container";
 import st from "./styles.module.scss";
+
+const AddTaskFeature = React.lazy(
+  () => import("feature/add-task-feature/ui/add-task-feature")
+);
 
 const Header = () => {
   const user = useStore($session);
@@ -21,7 +25,11 @@ const Header = () => {
               variant="contained"
               color="primary"
               onClick={() => {
-                setCurrentChild(<AddTaskFeature />);
+                setCurrentChild(
+                  <Suspense>
+                    <AddTaskFeature />
+                  </Suspense>
+                );
                 toggleIsOpen(true);
               }}
             >

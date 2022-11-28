@@ -23,7 +23,7 @@ import { Button } from "shared/ui/button/button";
 import { AddCategoryFeature } from "feature/add-category-feature/ui/add-category-feature";
 import { ModalCard } from "shared/ui/modal-card/modal-card";
 
-export const AddTaskFeature = () => {
+const AddTaskFeature = () => {
   const task = useStore($task);
   const categories = useStore($categories);
 
@@ -85,3 +85,5 @@ export const AddTaskFeature = () => {
   }
   return <ModalCard></ModalCard>;
 };
+
+export default AddTaskFeature;

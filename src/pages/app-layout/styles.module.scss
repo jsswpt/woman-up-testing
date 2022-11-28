@@ -30,3 +30,9 @@
 .main {
   padding: units.$paddingY 0;
 }
+
+.levitate {
+  position: fixed;
+  right: units.$unit * 5;
+  bottom: units.$unit * 5;
+}
