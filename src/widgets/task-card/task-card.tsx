@@ -16,7 +16,7 @@ interface TaskCardProps {
   isDone: boolean;
 }
 
-export const TaskCard = (props: TaskCardProps) => {
+export const TaskCard = React.memo((props: TaskCardProps) => {
   return (
     <Card className={st.task_card}>
       <div>
@@ -47,4 +47,4 @@ export const TaskCard = (props: TaskCardProps) => {
       </div>
     </Card>
   );
-};
+});

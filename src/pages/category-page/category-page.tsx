@@ -1,10 +1,11 @@
 import React, { Suspense } from "react";
 import { useList, useStore } from "effector-react";
-import { $finalTasks, TaskCard } from "entities/tasks";
+import { $finalTasks } from "entities/tasks";
 import { Container } from "shared/ui/container/container";
 import st from "./styles.module.scss";
 import { dateFormatter } from "shared/lib/dateFormatter";
 import { Select } from "shared/ui/select/select";
+import { TaskCard } from "widgets/task-card/task-card";
 
 const CategoryPage = () => {
   const currentTasks = useList($finalTasks, (task) => (

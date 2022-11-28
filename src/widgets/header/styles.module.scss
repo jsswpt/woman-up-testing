@@ -1,12 +1,12 @@
 @use "../../shared/modules/units.module";
 @use "../../shared/modules/breakpoints.module";
+@use "../../shared/modules/typography.module";
 @use "../../shared/modules/colors.module";
 
 .header {
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  width: 100%;
   height: units.$header-height;
   background: colors.$surface;
   box-shadow: 20px -5px 32px rgba(0, 0, 0, 0.05);
@@ -15,7 +15,17 @@
     z-index: 3;
     position: fixed;
     top: 0;
+    width: calc(100% - units.$sidebar-width);
     left: units.$sidebar-width;
-    width: 100%;
   }
+}
+
+.header_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.welcome {
+  @include typography.h5;
 }

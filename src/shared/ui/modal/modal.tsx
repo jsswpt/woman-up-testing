@@ -42,8 +42,10 @@ export const Modal = (props: ModalProps) => {
   useEffect(() => {
     if (!animation.isInTransition && !animation.isOpen) {
       modal.remove();
+      document.body.style.overflow = "auto";
     } else {
       document.body.appendChild(modal);
+      document.body.style.overflow = "hidden";
     }
   }, [animation]);
 

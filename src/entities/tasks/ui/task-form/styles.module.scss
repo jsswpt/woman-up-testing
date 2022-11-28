@@ -1,6 +1,6 @@
-@use "../../../shared/modules/units.module";
-@use "../../../shared/modules/breakpoints.module";
-@use "../../../shared/modules/typography.module";
+@use "../../../../shared/modules/units.module";
+@use "../../../../shared/modules/breakpoints.module";
+@use "../../../../shared/modules/typography.module";
 
 .card {
   padding: units.$unit * 2;
