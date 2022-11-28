@@ -18,6 +18,7 @@ import {
   setDescription,
   setTitle,
 } from "../model";
+import { setCurrentChild, toggleIsOpen } from "entities/modal/index";
 
 import st from "./styles.module.scss";
 
@@ -42,7 +43,7 @@ export const AddTaskFeature = () => {
           addTask();
         }}
         onReset={(evt) => {
-          console.log("rest");
+          toggleIsOpen(false);
         }}
       >
         <div className={st.form_top}>
@@ -86,8 +87,22 @@ export const AddTaskFeature = () => {
           />
         </div>
         <div className={st.form_bottom}>
-          <Button type="reset">Закрыть</Button>
-          <Button type="submit">Создать</Button>
+          <Button
+            type="submit"
+            className={st.create_button}
+            color="primary"
+            variant="contained"
+          >
+            Создать
+          </Button>
+          <Button
+            type="reset"
+            className={st.close_button}
+            color="warning"
+            variant="contained"
+          >
+            Закрыть
+          </Button>
         </div>
       </form>
     </Card>

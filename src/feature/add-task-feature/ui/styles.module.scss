@@ -5,7 +5,17 @@
 .card {
   padding: units.$unit * 2;
 
-  @include breakpoints.screen-lg {
+  @include breakpoints.screen-xs {
+    width: 100%;
+
+    input {
+      width: 100%;
+    }
+    select {
+      width: 100%;
+    }
+  }
+  @include breakpoints.screen-sm {
     width: units.$unit * 70;
   }
 }
@@ -26,6 +36,21 @@
   align-items: center;
   justify-content: space-between;
   gap: units.$unit * 3;
+
+  @include breakpoints.screen-xs {
+    flex-direction: column;
+
+    .date_time_wrap {
+      width: 100%;
+    }
+  }
+  @include breakpoints.screen-sm {
+    flex-direction: row;
+
+    .date_time_wrap {
+      width: 30%;
+    }
+  }
 }
 
 .input_title {
@@ -43,8 +68,30 @@
   flex-shrink: 0;
 }
 
+.form_middle {
+  display: flex;
+  flex-direction: column;
+  gap: units.$unit * 2;
+}
+
 .form_bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @include breakpoints.screen-xs {
+    flex-direction: column;
+    gap: units.$unit;
+
+    button {
+      width: 100%;
+    }
+  }
+
+  @include breakpoints.screen-sm {
+    flex-direction: row;
+
+    button {
+      width: fit-content;
+    }
+  }
 }

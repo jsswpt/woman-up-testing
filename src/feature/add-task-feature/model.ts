@@ -6,8 +6,9 @@ import {
   setCurrentTasks,
 } from "entities/tasks";
 import { Task } from "shared/api/internal/task/task.type";
+import { getRandomId } from "shared/lib/getRandomId";
 
-export const $task = createStore<Task>({
+export const $task = createStore<Omit<Task, "isDone">>({
   categoryId: "",
   creationDate: new Date(),
   deadline: new Date(),
@@ -46,7 +47,7 @@ sample({
   clock: addTask,
   source: { tasks: $tasks, task: $task },
   fn: ({ tasks, task }) => {
-    return [...tasks, task];
+    return [...tasks, { ...task, isDone: false, id: getRandomId() }];
   },
   target: $tasks,
 });
